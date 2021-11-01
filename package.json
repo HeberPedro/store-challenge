@@ -51,6 +51,7 @@
     "@testing-library/jest-native": "^4.0.2",
     "axios": "^0.24.0",
     "date-fns": "^2.25.0",
+    "immer": "^9.0.6",
     "jest-styled-components": "^7.0.5",
     "numeral": "^2.0.6",
     "polished": "^4.1.3",
