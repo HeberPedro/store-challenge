@@ -3,6 +3,7 @@ import { ActivityIndicator } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 
 import mockProducts from '../../mock/products.json'
+import { formatPrice } from '../../utils'
 import * as S from './styles'
 
 export interface Product {
@@ -22,7 +23,11 @@ const Home = () => {
 
   useEffect(() => {
     function loadProducts() {
-      setProducts(mockProducts)
+      const data = mockProducts.map((product) => ({
+        ...product,
+        priceFormatted: formatPrice(product.price),
+      }))
+      setProducts(data)
     }
     loadProducts()
   }, [])
@@ -37,7 +42,7 @@ const Home = () => {
             <S.Product>
               <S.ProductImage source={{ uri: product.image }} />
               <S.ProductTitle>{product.title}</S.ProductTitle>
-              <S.ProductPrice>{product.price}</S.ProductPrice>
+              <S.ProductPrice>{product.priceFormatted}</S.ProductPrice>
               <S.ProductAddButton onPress={() => handleAddProduct(product.id)}>
                 <S.ProductAmount>
                   <Icon name="add-shopping-cart" color="#FFF" size={20} />
