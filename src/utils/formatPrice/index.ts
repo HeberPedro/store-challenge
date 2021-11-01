@@ -3,5 +3,5 @@ import 'numeral/locales/pt-br'
 
 numeral.locale('pt-br')
 
-export const formatValue = (num: number) =>
+export const formatPrice = (num: number) =>
   `R$ ${numeral(num).format('0,0.00')}`
