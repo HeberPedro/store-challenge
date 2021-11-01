@@ -1,28 +1,35 @@
 import 'react-native-gesture-handler'
-
 import React from 'react'
 import { View, StatusBar } from 'react-native'
+import { Provider } from 'react-redux'
 
 import { NavigationContainer } from '@react-navigation/native'
 
 import Header from './components/Header'
 import Routes from './routes'
+import { store } from './store'
 
 const App = () => (
-  <NavigationContainer>
-    <StatusBar barStyle="light-content" backgroundColor="#312e38" translucent />
+  <Provider store={store}>
+    <NavigationContainer>
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="#312e38"
+        translucent
+      />
 
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: '#312e38',
-      }}
-    >
-      <Header />
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#312e38',
+        }}
+      >
+        <Header />
 
-      <Routes />
-    </View>
-  </NavigationContainer>
+        <Routes />
+      </View>
+    </NavigationContainer>
+  </Provider>
 )
 
 export default App
