@@ -5,6 +5,7 @@ import { View, StatusBar } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native'
 
+import Header from './components/Header'
 import Routes from './routes'
 
 const App = () => (
@@ -17,6 +18,8 @@ const App = () => (
         backgroundColor: '#312e38',
       }}
     >
+      <Header />
+
       <Routes />
     </View>
   </NavigationContainer>
