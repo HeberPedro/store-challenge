@@ -54,17 +54,17 @@ const Cart = () => {
                 <S.ProductSubtotalContainer>
                   <S.ProductAmountContainer>
                     <S.ProductControlButton onPress={() => decrement(product)}>
-                      <Icon name="remove-circle" color="#7159c1" size={24} />
+                      <Icon name="remove-circle" color="#22b24d" size={24} />
                     </S.ProductControlButton>
                     <S.ProductAmount value={String(product.amount)} />
                     <S.ProductControlButton onPress={() => increment(product)}>
-                      <Icon name="add-circle" color="#7159c1" size={24} />
+                      <Icon name="add-circle" color="#22b24d" size={24} />
                     </S.ProductControlButton>
                   </S.ProductAmountContainer>
                   <S.ProductDeleteButton
                     onPress={() => console.log(product.id)}
                   >
-                    <Icon name="delete" color="#7159c1" size={24} />
+                    <Icon name="delete" color="#22b24d" size={24} />
                   </S.ProductDeleteButton>
 
                   <S.ProductPriceContainer>

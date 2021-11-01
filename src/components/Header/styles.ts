@@ -46,5 +46,5 @@ export const ItemCount = styled.Text`
   line-height: 18px;
   text-align: center;
   color: #fff;
-  background: #7159c1;
+  background: #22b24d;
 `

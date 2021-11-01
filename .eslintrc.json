@@ -46,7 +46,6 @@
     "semi": ["error", "never"],
     "global-require": "off",
     "no-use-before-define": "off",
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "no-unused-expressions": [
       "error",
       { "allowShortCircuit": true, "allowTernary": true }

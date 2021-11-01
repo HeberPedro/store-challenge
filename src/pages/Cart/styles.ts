@@ -50,7 +50,7 @@ export const TotalContainer = styled.View`
 `
 
 export const OrderButton = styled.TouchableOpacity`
-  background: #7159c1;
+  background: #22b24d;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
