@@ -4,20 +4,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
-import products from '../../mock/products.json'
 import { RootStackParamList } from '../../routes'
+import { Product } from '../../store/modules/cart/types'
 import * as S from './styles'
-
-export interface Product {
-  id: number
-  title: string
-  price: number
-  priceFormatted?: string
-  image: string
-  subtotal?: number
-  amount?: number
-  loading?: boolean
-}
 
 type HeaderComponentProp = StackNavigationProp<
   RootStackParamList,
@@ -29,7 +18,7 @@ const Cart = () => {
 
   const total = 0
 
-  const cart: Product[] = products
+  const cart: Product[] = []
 
   const increment = (product: Product) => console.log(product)
 

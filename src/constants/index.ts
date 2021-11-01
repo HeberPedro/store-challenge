@@ -1,2 +1,2 @@
-export const STORAGE_KEY = '@react-native-boilerplate'
-export const BASE_URL = ''
+export const BASE_URL =
+  'https://my-json-server.typicode.com/heberpedro/api-store-challenge'
