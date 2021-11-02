@@ -3,9 +3,8 @@ import { call, select, put, all, takeLatest } from 'redux-saga/effects'
 
 import { PayloadAction } from 'typesafe-actions'
 
-import { StoreState } from '@/store/createStore'
-
 import { api } from '../../../services'
+import { StoreState } from '../../../store/createStore'
 import { formatPrice } from '../../../utils'
 import { addToCartSuccess, updateAmountSuccess } from './actions'
 import { Product, Stock } from './types'

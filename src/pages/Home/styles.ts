@@ -3,7 +3,7 @@ import { RectButton } from 'react-native-gesture-handler'
 
 import styled from 'styled-components/native'
 
-import { Product as ProductType } from '.'
+import { Product as ProductType } from '../../store/modules/cart/types'
 
 export const Container = styled.View`
   flex: 1;
