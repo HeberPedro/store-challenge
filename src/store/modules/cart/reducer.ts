@@ -26,7 +26,9 @@ export default function cart(
       })
     case '@cart/UPDATE_AMOUNT_SUCCESS': {
       return produce(state, (draft) => {
-        const productIndex = draft.findIndex((p) => p.id === action.payload.id)
+        const productIndex = draft.findIndex(
+          (product) => product.id === action.payload.id
+        )
 
         if (productIndex >= 0) {
           draft[productIndex].amount = Number(action.payload.amount)
