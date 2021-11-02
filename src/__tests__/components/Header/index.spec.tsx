@@ -2,8 +2,8 @@ import '@testing-library/jest-native'
 
 import React from 'react'
 
-import Header from '../../components/Header'
-import { render } from '../test-utils'
+import Header from '../../../components/Header'
+import { render } from '../../test-utils'
 
 const mockCart = [
   {

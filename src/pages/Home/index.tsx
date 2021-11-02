@@ -64,10 +64,13 @@ const Home = () => {
               <S.ProductImage source={{ uri: product.image }} />
               <S.ProductTitle>{product.title}</S.ProductTitle>
               <S.ProductPrice>{product.priceFormatted}</S.ProductPrice>
-              <S.ProductAddButton onPress={() => handleAddProduct(product.id)}>
+              <S.ProductAddButton
+                onPress={() => handleAddProduct(product.id)}
+                testID="add-product-button"
+              >
                 <S.ProductAmount>
                   <Icon name="add-shopping-cart" color="#FFF" size={20} />
-                  <S.ProductAmountText>
+                  <S.ProductAmountText testID="cart-product-quantity">
                     {amount[product.id] || 0}
                   </S.ProductAmountText>
                 </S.ProductAmount>
