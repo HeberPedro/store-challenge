@@ -27,7 +27,7 @@ const Header = () => {
 
       <S.CartButton onPress={() => navigate('Cart')}>
         <Icon name="shopping-cart" size={28} color="#fff" />
-        <S.ItemCount>{cartSize}</S.ItemCount>
+        <S.ItemCount testID="cart-size">{cartSize}</S.ItemCount>
       </S.CartButton>
     </S.Container>
   )
