@@ -6,14 +6,15 @@ module.exports = {
       babelConfig: true,
     },
   },
-  resetMocks: true,
+  transform: {
+    '^.+\\.jsx$': 'babel-jest',
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  transformIgnorePatterns: ['/node_modules/(?!native-base)/'],
+  setupFiles: ['./node_modules/react-native-gesture-handler/jestSetup.js'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  transform: {
-    '^.+\\.(js|jsx)$': 'babel-jest',
-    '^.+\\.(ts|tsx)$': 'ts-jest',
-  },
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$',
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '\\.snap$'],
+  coveragePathIgnorePatterns: ['<rootDir>/src/__tests__/test-utils.jsx'],
   cacheDirectory: '.jest/cache',
 }
