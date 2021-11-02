@@ -1,10 +1,12 @@
 import React, { memo } from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import { useSelector } from 'react-redux'
 
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
 import { RootStackParamList } from '../../routes'
+import { StoreState } from '../../store/createStore'
 import * as S from './styles'
 
 type HeaderComponentProp = StackNavigationProp<
@@ -15,6 +17,8 @@ type HeaderComponentProp = StackNavigationProp<
 const Header = () => {
   const { navigate } = useNavigation<HeaderComponentProp>()
 
+  const cartSize = useSelector((state: StoreState) => state.cart.length)
+
   return (
     <S.Container>
       <S.LogoContainer onPress={() => navigate('Home')}>
@@ -23,7 +27,7 @@ const Header = () => {
 
       <S.CartButton onPress={() => navigate('Cart')}>
         <Icon name="shopping-cart" size={28} color="#fff" />
-        <S.ItemCount>0</S.ItemCount>
+        <S.ItemCount>{cartSize}</S.ItemCount>
       </S.CartButton>
     </S.Container>
   )
