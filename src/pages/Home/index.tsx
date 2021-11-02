@@ -75,7 +75,7 @@ const Home = () => {
                   </S.ProductAmountText>
                 </S.ProductAmount>
                 <S.ProductAddButtonText>
-                  Adicionar ao carrinho
+                  ADICIONAR AO CARRINHO
                 </S.ProductAddButtonText>
               </S.ProductAddButton>
             </S.Product>

@@ -87,6 +87,7 @@ export const ProductAmountText = styled.Text`
 
 export const ProductAddButtonText = styled.Text`
   flex: 1;
+  justify-content: center;
   text-align: center;
   color: #fff;
 `
