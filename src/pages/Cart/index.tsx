@@ -70,12 +70,18 @@ const Cart = () => {
                   <S.ProductAmountContainer>
                     <S.ProductControlButton
                       onPress={() => handleProductDecrement(product)}
+                      disabled={product.amount <= 1}
+                      testID="decrement-product"
                     >
                       <Icon name="remove-circle" color="#22b24d" size={24} />
                     </S.ProductControlButton>
-                    <S.ProductAmount value={String(product.amount)} />
+                    <S.ProductAmount
+                      value={String(product.amount)}
+                      testID="product-amount"
+                    />
                     <S.ProductControlButton
                       onPress={() => handleProductIncrement(product)}
+                      testID="increment-product"
                     >
                       <Icon name="add-circle" color="#22b24d" size={24} />
                     </S.ProductControlButton>

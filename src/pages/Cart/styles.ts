@@ -27,9 +27,10 @@ export const Product = styled.View`
 `
 
 export const Total = styled.Text`
+  color: #999;
+  font-weight: bold;
   font-size: 32px;
   margin: 0px 30px 15px;
-  font-weight: bold;
 `
 
 export const TotalText = styled.Text`
@@ -103,6 +104,7 @@ export const ProductAmountContainer = styled.View`
 export const ProductAmount = styled.TextInput.attrs({
   readonly: true,
 })`
+  color: #000;
   text-align: center;
   background: #fff;
   padding: 5px;
