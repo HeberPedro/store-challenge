@@ -1,11 +1,18 @@
 import React from 'react'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
 import { RootStackParamList } from '../../routes'
+import { StoreState } from '../../store/createStore'
+import {
+  removeFromCart,
+  updateAmountRequest,
+} from '../../store/modules/cart/actions'
 import { Product } from '../../store/modules/cart/types'
+import { formatPrice } from '../../utils'
 import * as S from './styles'
 
 type HeaderComponentProp = StackNavigationProp<
@@ -16,13 +23,31 @@ type HeaderComponentProp = StackNavigationProp<
 const Cart = () => {
   const { navigate } = useNavigation<HeaderComponentProp>()
 
-  const total = 0
+  const total = useSelector((state: StoreState) =>
+    formatPrice(
+      state.cart.reduce((totalSum, product) => {
+        return totalSum + product.price * product.amount
+      }, 0)
+    )
+  )
 
-  const cart: Product[] = []
+  const cart = useSelector((state: StoreState) =>
+    state.cart.map((product) => ({
+      ...product,
+      subtotal: formatPrice(product.price * product.amount),
+    }))
+  )
 
-  const increment = (product: Product) => console.log(product)
+  const dispatch = useDispatch()
 
-  const decrement = (product: Product) => console.log(product)
+  const handleProductIncrement = (product: Product) => {
+    dispatch(updateAmountRequest(product.id, product.amount + 1))
+  }
+
+  const handleProductDecrement = (product: Product) =>
+    dispatch(updateAmountRequest(product.id, product.amount - 1))
+
+  const handleRemoveFromCart = (id: number) => dispatch(removeFromCart(id))
 
   return (
     <S.Container>
@@ -40,25 +65,31 @@ const Cart = () => {
                     <S.ProductPrice>{product.priceFormatted}</S.ProductPrice>
                   </S.ProductInfoContainer>
                 </S.ProductPresentation>
+
                 <S.ProductSubtotalContainer>
                   <S.ProductAmountContainer>
-                    <S.ProductControlButton onPress={() => decrement(product)}>
+                    <S.ProductControlButton
+                      onPress={() => handleProductDecrement(product)}
+                    >
                       <Icon name="remove-circle" color="#22b24d" size={24} />
                     </S.ProductControlButton>
                     <S.ProductAmount value={String(product.amount)} />
-                    <S.ProductControlButton onPress={() => increment(product)}>
+                    <S.ProductControlButton
+                      onPress={() => handleProductIncrement(product)}
+                    >
                       <Icon name="add-circle" color="#22b24d" size={24} />
                     </S.ProductControlButton>
                   </S.ProductAmountContainer>
-                  <S.ProductDeleteButton
-                    onPress={() => console.log(product.id)}
-                  >
-                    <Icon name="delete" color="#22b24d" size={24} />
-                  </S.ProductDeleteButton>
 
                   <S.ProductPriceContainer>
                     <S.ProductPrice>{product.priceFormatted}</S.ProductPrice>
                   </S.ProductPriceContainer>
+
+                  <S.ProductDeleteButton
+                    onPress={() => handleRemoveFromCart(product.id)}
+                  >
+                    <Icon name="delete" color="#22b24d" size={24} />
+                  </S.ProductDeleteButton>
                 </S.ProductSubtotalContainer>
               </S.Product>
             )}
@@ -74,7 +105,7 @@ const Cart = () => {
       ) : (
         <S.EmptyCartContainer>
           <Icon name="remove-shopping-cart" color="#fff" size={100} />
-          <S.ProductTitle> Carrinho vazio</S.ProductTitle>
+          <S.EmptyCartTitle>Carrinho vazio</S.EmptyCartTitle>
           <S.OrderButton onPress={() => navigate('Home')}>
             <S.OrderButtonText>VOLTAR PARA HOME</S.OrderButtonText>
           </S.OrderButton>

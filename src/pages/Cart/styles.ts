@@ -2,7 +2,7 @@ import { FlatList } from 'react-native'
 
 import styled from 'styled-components/native'
 
-import { Product as ProductType } from '.'
+import { Product as ProductType } from '../../store/modules/cart/types'
 
 export const Container = styled.View`
   background: #191920;
@@ -76,7 +76,10 @@ export const ProductTitle = styled.Text`
   margin-bottom: 15px;
 `
 
+export const ProductPriceContainer = styled.View``
+
 export const ProductPrice = styled.Text`
+  color: #000;
   margin: 14px 0px;
   font-size: 16px;
   margin-bottom: 14px;
@@ -89,7 +92,6 @@ export const ProductSubtotalContainer = styled.View`
   justify-content: space-between;
   padding: 10px;
   background: #eeeeee;
-  height: 50px;
   border-radius: 4px;
 `
 
@@ -109,8 +111,6 @@ export const ProductAmount = styled.TextInput.attrs({
   border-radius: 4px;
   min-width: 52px;
 `
-
-export const ProductPriceContainer = styled.View``
 
 export const ProductPresentation = styled.View`
   flex-direction: row;
@@ -132,4 +132,11 @@ export const ProductControlButton = styled.TouchableOpacity``
 export const EmptyCartContainer = styled.View`
   margin: 20px;
   align-items: center;
+`
+
+export const EmptyCartTitle = styled.Text`
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 35px;
 `
